@@ -49,6 +49,14 @@ namespace GeocodeApi
             });
             IMapper mapper = config.CreateMapper();
             services.AddSingleton(mapper);
+
+            services.AddCors(option =>
+            {
+                option.AddPolicy("FromGeocodeMvc", builder =>
+                {
+                    builder.WithOrigins("http://localhost:5001");
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,6 +68,8 @@ namespace GeocodeApi
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "GeocodeApi v1"));
             }
+
+            app.UseCors("FromGeocodeMvc");
 
             context.Database.EnsureCreated();
 

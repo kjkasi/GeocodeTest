@@ -1,8 +1,16 @@
-﻿@{
+﻿@model GeocodeMvc.Models.TransferViewModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Select source</h1>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Source.Name, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Source.Name, new { @class = "form-control", id = "TextBoxTransfer" })
+            @Html.ValidationMessageFor(m => m.Source.Name, "", new { @class = "text-danger" })
+            @Html.HiddenFor(m => m.Source.PlaceId, new { @id = "EventSourceId" })
+        </div>
+    </div>
 </div>

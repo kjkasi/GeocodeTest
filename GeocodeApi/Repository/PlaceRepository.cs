@@ -38,7 +38,7 @@ namespace GeocodeApi.Repository
 
         public async Task<IEnumerable<Place>> SearchPlaceByText(string searchText)
         {
-            var items = await _context.PlaceItems.Where(x => EF.Functions.Like(x.PlaceName, $"%{searchText}%")).ToListAsync();
+            var items = await _context.PlaceItems.Where(x => EF.Functions.Like(x.Name, $"%{searchText}%")).ToListAsync();
             return items;
         }
     }

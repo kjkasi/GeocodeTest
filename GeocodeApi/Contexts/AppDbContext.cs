@@ -22,14 +22,12 @@ namespace GeocodeApi.Contexts
                 new Place
                 {
                     PlaceId = 1,
-                    PlaceName = "ya.ru",
-                    PlaceDesc = "3"
+                    Name = "ya.ru",
                 },
                 new Place
                 {
                     PlaceId = 2,
-                    PlaceName = "ay.ru",
-                    PlaceDesc = "4"
+                    Name = "ay.ru",
                 }
             );
         }
