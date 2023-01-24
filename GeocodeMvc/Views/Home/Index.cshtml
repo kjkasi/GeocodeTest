@@ -4,13 +4,28 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Select source</h1>
+    <h1 class="display-4">Select source and destination</h1>
     <div class="form-group">
-        @Html.LabelFor(m => m.Source.Name, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Source.Name, new { @class = "form-control", id = "TextBoxTransfer" })
-            @Html.ValidationMessageFor(m => m.Source.Name, "", new { @class = "text-danger" })
-            @Html.HiddenFor(m => m.Source.PlaceId, new { @id = "EventSourceId" })
-        </div>
+        @Html.LabelFor(m => m.Source, new { @class = "col-md-2 control-label" })
+        @Html.TextBoxFor(m => m.Source.Name, new { @class = "form-control", id = "TextBoxFrom" })
+        @Html.ValidationMessageFor(m => m.Source.Name, "", new { @class = "text-danger" })
+
+        @*@Html.LabelFor(m => m.Source.Longitude, new { @class = "col-md-2 control-label" })*@
+        @Html.HiddenFor(m => m.Source.Longitude, new { @class = "form-control", id = "TextBoxFromLong" })
+
+        @*@Html.LabelFor(m => m.Source.Latitude, new { @class = "col-md-2 control-label" })*@
+        @Html.HiddenFor(m => m.Source.Latitude, new { @class = "form-control", id = "TextBoxFromLat" })
+        @*@Html.HiddenFor(m => m.Source.PlaceId, new { @id = "EventSourceId" })*@
+
+        @Html.LabelFor(m => m.Destination, new { @class = "col-md-2 control-label" })
+        @Html.TextBoxFor(m => m.Destination.Name, new { @class = "form-control", id = "TextBoxTo" })
+        @Html.ValidationMessageFor(m => m.Destination.Name, "", new { @class = "text-danger" })
+
+        @*@Html.LabelFor(m => m.Source.Longitude, new { @class = "col-md-2 control-label" })*@
+        @Html.HiddenFor(m => m.Destination.Longitude, new { @class = "form-control", id = "TextBoxToLong" })
+
+        @*@Html.LabelFor(m => m.Source.Latitude, new { @class = "col-md-2 control-label" })*@
+        @Html.HiddenFor(m => m.Destination.Latitude, new { @class = "form-control", id = "TextBoxToLat" })
+        @*@Html.HiddenFor(m => m.Source.PlaceId, new { @id = "EventSourceId" })*@
     </div>
 </div>
