@@ -2,30 +2,38 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+<h1>Find</h1>
 
-<div class="text-center">
-    <h1 class="display-4">Select source and destination</h1>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Source, new { @class = "col-md-2 control-label" })
-        @Html.TextBoxFor(m => m.Source.Name, new { @class = "form-control", id = "TextBoxFrom" })
-        @Html.ValidationMessageFor(m => m.Source.Name, "", new { @class = "text-danger" })
+<h4>Transfer</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Find">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Source" class="control-label"></label>
+                <input asp-for="Source.Name" class="form-control" id="InputSource" />
+                <span asp-validation-for="Source.Name" class="text-danger"></span>
+            </div>
+            <input asp-for="Source.PlaceId" id="InputSourcePlaceId" hidden />
+            <input asp-for="Source.Longitude" id="InputSourceLongitude" hidden />
+            <input asp-for="Source.Latitude" id="InputSourceLatitude" hidden />
+            <div class="form-group">
+                <label asp-for="Destination" class="control-label"></label>
+                <input asp-for="Destination.Name" class="form-control" id="InputDestination" />
+                <span asp-validation-for="Destination.Name" class="text-danger"></span>
+            </div>
+            <input asp-for="Destination.PlaceId" id="InputDestinationPlaceId" hidden />
+            <input asp-for="Destination.Longitude" id="InputDestinationLongitude" hidden />
+            <input asp-for="Destination.Latitude" id="InputDestinationLatitude" hidden />
 
-        @*@Html.LabelFor(m => m.Source.Longitude, new { @class = "col-md-2 control-label" })*@
-        @Html.HiddenFor(m => m.Source.Longitude, new { @class = "form-control", id = "TextBoxFromLong" })
-
-        @*@Html.LabelFor(m => m.Source.Latitude, new { @class = "col-md-2 control-label" })*@
-        @Html.HiddenFor(m => m.Source.Latitude, new { @class = "form-control", id = "TextBoxFromLat" })
-        @*@Html.HiddenFor(m => m.Source.PlaceId, new { @id = "EventSourceId" })*@
-
-        @Html.LabelFor(m => m.Destination, new { @class = "col-md-2 control-label" })
-        @Html.TextBoxFor(m => m.Destination.Name, new { @class = "form-control", id = "TextBoxTo" })
-        @Html.ValidationMessageFor(m => m.Destination.Name, "", new { @class = "text-danger" })
-
-        @*@Html.LabelFor(m => m.Source.Longitude, new { @class = "col-md-2 control-label" })*@
-        @Html.HiddenFor(m => m.Destination.Longitude, new { @class = "form-control", id = "TextBoxToLong" })
-
-        @*@Html.LabelFor(m => m.Source.Latitude, new { @class = "col-md-2 control-label" })*@
-        @Html.HiddenFor(m => m.Destination.Latitude, new { @class = "form-control", id = "TextBoxToLat" })
-        @*@Html.HiddenFor(m => m.Source.PlaceId, new { @id = "EventSourceId" })*@
+            <div class="form-group">
+                <input type="submit" value="Find" class="btn btn-primary" />
+            </div>
+        </form>
     </div>
 </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

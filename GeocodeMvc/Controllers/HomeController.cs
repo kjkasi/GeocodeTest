@@ -28,6 +28,12 @@ namespace GeocodeMvc.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult Find(TransferViewModel find)
+        {
+            return Ok(find);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

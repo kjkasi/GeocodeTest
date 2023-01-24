@@ -5,7 +5,7 @@
 
 $(document).ready(function () {
     $(function () {
-        $('#TextBoxFrom').autocomplete({
+        $('#InputSource').autocomplete({
             source: function (request, response) {
                 $.ajax({
                     url: "http://localhost:5000/api/Place/SearchPlace",
@@ -22,6 +22,7 @@ $(document).ready(function () {
                             response($.map(data, function (item) {
                                 return {
                                     label: item.name,
+                                    place_id: item.placeId,
                                     long: item.longitude,
                                     lat: item.longitude
                                 }
@@ -37,15 +38,15 @@ $(document).ready(function () {
                 noResults: "", results: ""
             },
             select: function (event, ui) {
-                console.log(ui);
-                $('#TextBoxFrom').val(ui.item.label);
-                $('#TextBoxFromLong').val(ui.item.long);
-                $('#TextBoxFromLat').val(ui.item.lat);
+                $('#InputSource').val(ui.item.label);
+                $('#InputSourcePlaceId').val(ui.item.place_id);
+                $('#InputSourceLongitude').val(ui.item.long);
+                $('#InputSourceLatitude').val(ui.item.lat);
                 return false;
             }
         });
 
-        $('#TextBoxTo').autocomplete({
+        $('#InputDestination').autocomplete({
             source: function (request, response) {
                 $.ajax({
                     url: "http://localhost:5000/api/Place/SearchPlace",
@@ -62,6 +63,7 @@ $(document).ready(function () {
                             response($.map(data, function (item) {
                                 return {
                                     label: item.name,
+                                    place_id: item.placeId,
                                     long: item.longitude,
                                     lat: item.longitude
                                 }
@@ -77,10 +79,10 @@ $(document).ready(function () {
                 noResults: "", results: ""
             },
             select: function (event, ui) {
-                console.log(ui);
-                $('#TextBoxTo').val(ui.item.label);
-                $('#TextBoxToLong').val(ui.item.long);
-                $('#TextBoxToLat').val(ui.item.lat);
+                $('#InputDestination').val(ui.item.label);
+                $('#InputDestinationPlaceId').val(ui.item.place_id);
+                $('#InputDestinationLongitude').val(ui.item.long);
+                $('#InputDestinationLatitude').val(ui.item.lat);
                 return false;
             }
         });
